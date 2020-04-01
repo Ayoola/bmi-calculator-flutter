@@ -3,14 +3,17 @@ import 'package:bmi_calculator/components/reusable_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../components/bottom_container.dart';
-import 'input_page.dart';
 
-class ResultPage extends StatefulWidget {
-  @override
-  _ResultPageState createState() => _ResultPageState();
-}
+class ResultPage extends StatelessWidget {
+  final String bmi;
+  final String category;
+  final String interpretation;
 
-class _ResultPageState extends State<ResultPage> {
+  ResultPage(
+      {@required this.bmi,
+      @required this.category,
+      @required this.interpretation});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,15 +42,15 @@ class _ResultPageState extends State<ResultPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   Text(
-                    'NORMAL',
+                    category.toUpperCase(),
                     style: kResultLabelTextStyle,
                   ),
                   Text(
-                    '22.1',
+                    bmi,
                     style: kResultNumberTextStyle,
                   ),
                   Text(
-                    'You have a normal body weight. Good job!',
+                    interpretation,
                     textAlign: TextAlign.center,
                     style: kResultCaptionTextStyle,
                   )
